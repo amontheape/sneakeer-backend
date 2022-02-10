@@ -33,3 +33,18 @@ export const getAll = (collection) => {
 		}
 	}
 }
+
+export const getOne = (collection) => {
+	return async (req, res) => {
+		try {
+			const { _id } = res.locals.user
+			const { id } = req.params
+
+			const result = await db.collection(collection).findOne({ _id: id, user_id: _id }).toArray()
+
+			res.status(200).json({ message: 'OK', result })
+		} catch (error) {
+			res.status(500).json({ message: 'Internal server error.' })
+		}
+	}
+}
