@@ -37,6 +37,7 @@ export async function validationToken(req, res, next) {
 			if (err) {
 				return res.status(403).json({ message: 'You need a valid token to access this route' })
 			} else {
+				res.locals.user = data
 				next()
 			}
 		})
