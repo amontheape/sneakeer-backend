@@ -3,22 +3,6 @@ import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv'
 dotenv.config()
 
-export const validationSchema = (schema) => {
-	return async (req, res, next) => {
-		try {
-			const validation = schema.validate(req.body);
-
-			if (validation.error) {
-				return res.status(422).send({ message: 'Invalid informed fields' });
-			}
-
-			next()
-		} catch {
-			next()
-		}
-	}
-}
-
 export async function validationEmailExists(req, res, next) {
 	let db = await initMongo()
 	const emailExists = await db.collection('users').findOne({ email: req.body.email })
