@@ -5,7 +5,7 @@ dotenv.config()
 
 export async function validationEmailExists(req, res, next) {
 	let db = await initMongo()
-	const emailExists = await db.collection('users').findOne({ email: req.body.email })
+	const emailExists = await db.collection('Users').findOne({ email: req.body.email })
 
 	if (emailExists) {
 		return res.status(409).json({ message: 'Email does not exist' })
