@@ -25,7 +25,7 @@ export async function validationToken(req, res, next) {
 				next()
 			}
 		})
-	} catch(err) {
+	} catch {
 		res.status(500).json({ message: 'Error verifying token' })
 	}
 }
