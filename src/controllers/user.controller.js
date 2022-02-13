@@ -1,3 +1,4 @@
+import { ObjectId } from 'mongodb'
 import initMongo from '../database/database.js'
 
 let db = await initMongo()
@@ -8,7 +9,7 @@ export async function changeEmail(req, res) {
 	try {
 		const { _id } = res.locals.user
 
-		const user = await db.collection('Users').findOne()
+		const user = await db.collection('Users').findOne({ _id: new ObjectId(_id) })
 
 		await db.collection('Users').updateOne(
 			{ email: user.email },
