@@ -8,7 +8,7 @@ export async function validationEmailExists(req, res, next) {
 	const emailExists = await db.collection('Users').findOne({ email: req.body.email })
 
 	if (emailExists) {
-		return res.status(409).json({ message: 'Email does not exist' })
+		return res.status(409).json({ message: 'Email already exists' })
 	}
 
 	next()
