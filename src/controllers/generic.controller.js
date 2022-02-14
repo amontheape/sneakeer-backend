@@ -23,7 +23,7 @@ export const create = (collection) => {
 export const getAll = (collection) => {
 	return async (req, res) => {
 		try {
-			const result = await db.collection(collection).find({}).toArray()
+			const result = await db.collection(collection).find({}).limit(parseInt(req.query.limit)).toArray()
 
 			res.status(200).json({ message: 'OK', result })
 		} catch (error) {
