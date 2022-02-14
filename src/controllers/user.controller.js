@@ -60,8 +60,6 @@ export async function changePersonalData(req, res) {
 
 		const user = await db.collection('Users').findOne({ _id: new ObjectId(_id) })
 
-		console.log(user)
-
 		await db.collection('Users').updateOne(
 			{ email: user.email },
 			{ $set: {first_name, last_name }}
