@@ -38,7 +38,7 @@ export async function singIn(req, res) {
 				expiresIn: process.env.JWT_EXPIRES_IN
 			})
 
-			res.status(200).json({ token })
+			res.status(200).json({ token, user })
 		} else {
 			res.status(404).json({ message: 'Not found' })
 		}
