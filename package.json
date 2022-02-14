@@ -19,6 +19,7 @@
     "joi": "^17.6.0",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^4.3.1",
+    "nodemailer": "^6.7.2",
     "string-strip-html": "^9.1.6",
     "uuid": "^8.3.2"
   },

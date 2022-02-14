@@ -7,6 +7,7 @@ import addressRouter from './src/routes/address.routes.js'
 import creditCardsRouter from './src/routes/credit_cards.routes.js'
 import productRouter from './src/routes/product.routes.js'
 import userRouter from './src/routes/user.routes.js'
+import orderRouter from './src/routes/order.routes.js'
 
 dotenv.config()
 
@@ -15,7 +16,8 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
-app.use([authRouter, indexRouter, addressRouter, creditCardsRouter, productRouter, userRouter])
+app.use([authRouter, indexRouter, addressRouter, creditCardsRouter, 
+    productRouter, userRouter, orderRouter])
 
 app.listen(process.env.PORT, () => {
     console.log(`Servidor rodando: ${process.env.PORT} 🤖`)
