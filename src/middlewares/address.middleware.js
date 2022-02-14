@@ -7,3 +7,4 @@ export async function adjustingUF(req, res, next) {
 		res.status(500).json({ message: 'Error when registering UF' })
 	}
 }
+
