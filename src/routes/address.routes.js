@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { create, getAll } from '../controllers/generic.controller.js'
+import { create, getAll, getUserAll } from '../controllers/generic.controller.js'
 import { validationToken } from '../middlewares/auth.middleware.js'
 import { validationSchema } from '../middlewares/schema.middleware.js'
 import dataSanitization from '../middlewares/dataSanitization.middleware.js'
@@ -10,5 +10,6 @@ const addressRouter = Router()
 
 addressRouter.post('/address', [dataSanitization, adjustingUF, validationSchema(addressSchema), validationToken], create('Address'))
 addressRouter.get('/address', validationToken, getAll('Address'))
+addressRouter.get('/user_address', validationToken, getUserAll('Address'))
 
 export default addressRouter
