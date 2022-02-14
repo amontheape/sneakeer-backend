@@ -6,13 +6,10 @@ let db = await initMongo()
 
 export const create = (collection) => {
 	return async (req, res) => {
-		console.log(req.body)
 		let body = req.body
 
 		try {
-			const { _id } = res.locals.user
-
-			await db.collection(collection).insertOne({ ...body, user_id: _id })
+			await db.collection(collection).insertMany(body)
 
 			res.status(201).json({ message: `${collection} created.` })
 		} catch (error) {
@@ -24,9 +21,9 @@ export const create = (collection) => {
 export const getAll = (collection) => {
 	return async (req, res) => {
 		try {
-			const { _id } = res.locals.user
+			const result = await db.collection(collection).find({}).toArray()
 
-			const result = await db.collection(collection).find({ user_id: _id }).toArray()
+			console.log(result)
 
 			res.status(200).json({ message: 'OK', result })
 		} catch (error) {

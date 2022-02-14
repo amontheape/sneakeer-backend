@@ -7,8 +7,8 @@ import { productSchema } from '../schemas/product.schema.js'
 
 const productRouter = Router()
 
-productRouter.post('/product', [dataSanitization, validationSchema(productSchema), validationToken], create('Product'))
-productRouter.get('/products', validationToken, getAll('Product'))
-productRouter.get('/product', validationToken, getOne('Product'))
+productRouter.post('/product', create('Products'))
+productRouter.get('/products', getAll('Products'))
+productRouter.get('/product', getOne('Products'))
 
 export default productRouter
