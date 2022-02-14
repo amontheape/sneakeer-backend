@@ -7,8 +7,8 @@ import { creditCardsSchema } from '../schemas/credit_cards.schema.js'
 
 const creditCardsRouter = Router()
 
-creditCardsRouter.post('/address', [dataSanitization, validationSchema(creditCardsSchema), validationToken], create('CreditCards'))
-creditCardsRouter.get('/addresses', validationToken, getAll('CreditCards'))
-creditCardsRouter.get('/address', validationToken, getOne('CreditCards'))
+creditCardsRouter.post('/credit_card', [dataSanitization, validationSchema(creditCardsSchema), validationToken], create('CreditCards'))
+creditCardsRouter.get('/credit_cards', validationToken, getAll('CreditCards'))
+creditCardsRouter.get('/credit_card', validationToken, getOne('CreditCards'))
 
 export default creditCardsRouter
