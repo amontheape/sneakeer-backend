@@ -6,7 +6,6 @@ let db = await initMongo()
 
 export const create = (collection) => {
 	return async (req, res) => {
-		console.log(req.body)
 		let body = req.body
 
 		try {
