@@ -5,7 +5,6 @@ dotenv.config()
 
 export async function sendEmail(req, res) {
 	let email = req.body.email
-	console.log(email)
 	try {
 		await transporter.sendMail({
 			from: `Equipe Sneakeer <${process.env.EMAIL}>`,
@@ -16,7 +15,6 @@ export async function sendEmail(req, res) {
 
 		res.status(200).json({ message: 'OK' })
 	} catch (error) {
-		console.log(error)
 		res.status(500).json({ message: 'Error with sendmail.' })
 	}
 }

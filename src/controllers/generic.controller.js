@@ -5,7 +5,6 @@ dotenv.config()
 let db = await initMongo()
 
 export const create = (collection) => {
-	console.log('oi')
 	return async (req, res) => {
 		let body = req.body
 
