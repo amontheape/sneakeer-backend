@@ -4,10 +4,12 @@ import { transporter } from '../utils/nodemailer.js';
 dotenv.config()
 
 export async function sendEmail(req, res) {
+	let email = req.body.email
+	console.log(email)
 	try {
 		await transporter.sendMail({
 			from: `Equipe Sneakeer <${process.env.EMAIL}>`,
-			to: `${req.body.email}`,
+			to: `${email}`,
 			subject: "Seu pedido esta sendo encaminhado para os correios.",
 			html: `<b>Parabéns!</b> sua compra foi concluída!`
 		})
