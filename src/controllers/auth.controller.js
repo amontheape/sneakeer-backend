@@ -10,6 +10,8 @@ export async function singUp(req, res) {
 	let body = req.body
 
 	try {
+		delete body["password_confirmation"]
+
 		const passwordHash = bcrypt.hashSync(body.password, 10)
 
 		await db.collection('Users').insertOne({ ...body, password: passwordHash })
@@ -27,7 +29,7 @@ export async function singIn(req, res) {
 		const user = await db.collection('Users').findOne({ email })
 
 		if (user && bcrypt.compareSync(password, user.password)) {
-			delete user.password_confirm
+			delete user.password_confirmation
 			delete user.password
 
 			const { _id, first_name } = user
@@ -36,7 +38,7 @@ export async function singIn(req, res) {
 				expiresIn: process.env.JWT_EXPIRES_IN
 			})
 
-			res.status(200).json({ token })
+			res.status(200).json({ token, user })
 		} else {
 			res.status(404).json({ message: 'Not found' })
 		}
